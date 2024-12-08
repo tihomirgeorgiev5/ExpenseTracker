@@ -21,6 +21,13 @@ namespace ExpenseTracker.Controllers
             return View(await applicationDbContext.ToListAsync());
         }
 
+        // GET: Transaction/AddOrEdit
+        public IActionResult AddOrEdit()
+        {
+            ViewData["CategoryId"] = new SelectList(_context.Categories, "CategoryId", "CategoryId"); 
+            return View(new Transaction());
+        }
+
         // GET: Transaction/Details/5
         public async Task<IActionResult> Details(int? id)
         {
